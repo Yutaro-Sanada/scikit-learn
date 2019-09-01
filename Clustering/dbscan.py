@@ -5,7 +5,7 @@ import numpy as np
 import time
 
 
-def dbscan(X, y, n):
+def dbscan(X, y, eps, n):
     """
     DBSCANを用いたクラスタリング
 
@@ -15,6 +15,8 @@ def dbscan(X, y, n):
         データ
     y : numpy array
         正解ラベル
+    eps : float
+        二つのサンプルの最大距離
     n : int
         クラスタ数
 
@@ -25,7 +27,7 @@ def dbscan(X, y, n):
     time_dbs : float
         実行時間
     """
-    dbs = DBSCAN(eps=0.1,
+    dbs = DBSCAN(eps=eps,
                  min_samples=2)
     start_dbs = time.time()
     y_dbs = dbs.fit_predict(X)
